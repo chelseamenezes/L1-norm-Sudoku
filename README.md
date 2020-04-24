@@ -1,5 +1,5 @@
 # L1-norm-Sudoku
-My re-implementation of the paper  "Linear Systems, Sparse Solutions, and Sudoku Prabhu Babu, Kristiaan Pelckmans
+My implementation of the paper  "Linear Systems, Sparse Solutions, and Sudoku Prabhu Babu, Kristiaan Pelckmans
  Petre Stoica, Fellow, IEEE and Jian Li, Fellow, IEEE" using Matlab.
 
 
