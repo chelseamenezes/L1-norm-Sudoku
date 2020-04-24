@@ -1,6 +1,6 @@
 clc; close all;
 clear all;
-I=eye(9);
+
 %-----------------------------------------------------------------------------
 %sudoku puzzle
 sp=[0,0,0,4,0,7,0,0,0;
@@ -43,31 +43,36 @@ end
 
 %-----------------------------------------------------------------------------
 %row constraint
-
-A_row=[I,I,I,I,I,I,I,I,I,zeros(9,648);
-  zeros(9,81),I,I,I,I,I,I,I,I,I,zeros(9,567);
-  zeros(9,162),I,I,I,I,I,I,I,I,I,zeros(9,486);
-  zeros(9,243),I,I,I,I,I,I,I,I,I,zeros(9,405);
-  zeros(9,324),I,I,I,I,I,I,I,I,I,zeros(9,324);
-  zeros(9,405),I,I,I,I,I,I,I,I,I,zeros(9,243);
-  zeros(9,486),I,I,I,I,I,I,I,I,I,zeros(9,162);
-  zeros(9,567),I,I,I,I,I,I,I,I,I,zeros(9,81);
-  zeros(9,648),I,I,I,I,I,I,I,I,I;
+% 9x9 identity matrix
+I=eye(9);
+I_9= [I,I,I,I,I,I,I,I,I;
+     ];
+A_row=[I_9,zeros(9,648);
+  zeros(9,81),I_9,zeros(9,567);
+  zeros(9,162),I_9,zeros(9,486);
+  zeros(9,243),I_9,zeros(9,405);
+  zeros(9,324),I_9,zeros(9,324);
+  zeros(9,405),I_9,zeros(9,243);
+  zeros(9,486),I_9,zeros(9,162);
+  zeros(9,567),I_9,zeros(9,81);
+  zeros(9,648),I_9;
   ];
 
 %-----------------------------------------------------------------------------
 % box constraint
 J=[I,I,I;];
 O_54=zeros(9,54);
-A_box= [J,O_54,J,O_54,J,zeros(9,540);
-        zeros(9,27),J,O_54,J,O_54,J,zeros(9,513);
-        zeros(9,54),J,O_54,J,O_54,J,zeros(9,486);
-        zeros(9,81),J,O_54,J,O_54,J,zeros(9,459);
-        zeros(9,108),J,O_54,J,O_54,J,zeros(9,432);
-        zeros(9,135),J,O_54,J,O_54,J,zeros(9,405);
-        zeros(9,162),J,O_54,J,O_54,J,zeros(9,378);
-        zeros(9,189),J,O_54,J,O_54,J,zeros(9,351);
-        zeros(9,216),J,O_54,J,O_54,J,zeros(9,324);
+J_O_J=[J,O_54,J,O_54,J;
+      ];
+A_box= [J_O_J,zeros(9,540);
+        zeros(9,27),J_O_J,zeros(9,513);
+        zeros(9,54),J_O_J,zeros(9,486);
+        zeros(9,81),J_O_J,zeros(9,459);
+        zeros(9,108),J_O_J,zeros(9,432);
+        zeros(9,135),J_O_J,zeros(9,405);
+        zeros(9,162),J_O_J,zeros(9,378);
+        zeros(9,189),J_O_J,zeros(9,351);
+        zeros(9,216),J_O_J,zeros(9,324);
         ];
 
 %------------------------------------------------------------------------------
