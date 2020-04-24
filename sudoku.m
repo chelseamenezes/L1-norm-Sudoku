@@ -108,8 +108,11 @@ b=ones((4*81+C),1);
 %------------------------------------------------------------------------------
 % Create and solve problem
 cvx_begin
-% cvx_solver Mosek 
-   variable X(729)
+% default solver show error "SDPT3 does not support binary variables. Please select a different solver."
+% using GLPK solver inside the module
+
+cvx_solver GLPK 
+   variable X(729) binary
    minimize( norm( X,1) )
    subject to
         A * X == b;
